@@ -57,7 +57,7 @@ public abstract class Item {
         this.itemName=itemName;
     }
 
-    public void DisplayItems(){
+    public void DisplayItem(){
         System.out.println(this.getItemKey()+" "+ this.getItemName()+" $"+this.getPrice()+" "+this.getStock());
     }
 
