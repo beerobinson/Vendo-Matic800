@@ -11,10 +11,10 @@ public class Audit {
 //    public void Record(Item item){
 //
 //    }
-    public void Record(String transaction, double amount){
+    public void Record(String transaction, double currentAmount, double newAmount){
         File datafile = new File("Log.txt");
         try(PrintWriter dataOutput = new PrintWriter(datafile)){
-            dataOutput.println(date + " " + time + " " + transaction + " " + amount);
+            dataOutput.println(date + " " + time + " " + transaction + " " + currentAmount + newAmount);
         }catch (Exception e){
             System.err.println(e.getMessage());
         }

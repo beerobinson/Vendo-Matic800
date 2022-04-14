@@ -2,6 +2,7 @@ package com.techelevator;
 
 import com.techelevator.view.Audit;
 import com.techelevator.view.Menu;
+import com.techelevator.view.Payment;
 import com.techelevator.view.VendingMachine;
 
 public class VendingMachineCLI {
@@ -27,6 +28,11 @@ public class VendingMachineCLI {
 				vend.DisplayItems();
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
+
+				vend.Insert();
+
+				vend.DispenseItem();
+
 			}
 		}
 	}

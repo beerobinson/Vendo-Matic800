@@ -6,23 +6,27 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class VendingMachine {
-    List<Item> stock = new ArrayList<>();
+public class VendingMachine extends Payment{
+    List<Item> itemInventory = new ArrayList<>();
     double moneyInserted = 0.0;
     public VendingMachine(){
         File vend=new File("capstone/vendingmachine.csv");
         try(Scanner dataInput = new Scanner(vend)){
             while(dataInput.hasNextLine()){
                 String lineOfInput = dataInput.nextLine();
-                String[] arr = lineOfInput.split("|");
+                String[] arr = lineOfInput.split("\\|");
                 if(arr[3].equalsIgnoreCase("Candy")){
-                    this.stock.add(new Candy(Double.parseDouble(arr[2]),5,arr[0],arr[1])) ;
+                    Candy candy = new Candy(Double.parseDouble(arr[2]),5,arr[0],arr[1]) ;
+                    this.itemInventory.add(candy);
                 }else if(arr[3].equalsIgnoreCase("Gum")){
-                    this.stock.add(new Gum(Double.parseDouble(arr[2]),5,arr[0],arr[1])) ;
+                    Gum gum = new Gum(Double.parseDouble(arr[2]),5,arr[0],arr[1]) ;
+                    this.itemInventory.add(gum);
                 }else if(arr[3].equalsIgnoreCase("Chip")){
-                    this.stock.add(new Chip(Double.parseDouble(arr[2]),5,arr[0],arr[1])) ;
+                    Chip chip = new Chip(Double.parseDouble(arr[2]),5,arr[0],arr[1]) ;
+                    this.itemInventory.add(chip);
                 }else if(arr[3].equalsIgnoreCase("Drink")){
-                    this.stock.add(new Drink(Double.parseDouble(arr[2]),5,arr[0],arr[1])) ;
+                    Drink drink = new Drink(Double.parseDouble(arr[2]),5,arr[0],arr[1]) ;
+                    this.itemInventory.add(drink);
                 }
             }
         }catch (Exception e){
@@ -31,9 +35,26 @@ public class VendingMachine {
     }
     public void DisplayItems(){
        try {
-           for (Item item : stock) {
+           for (Item item : itemInventory) {
                item.DisplayItem();
            }
-       }catch ()
+       }catch (Exception e){
+           System.err.println(e.getMessage());
+       }
+    }
+    public void DispenseItem(){
+        this.DisplayItems();
+        Scanner sc =new Scanner(System.in);
+        System.out.println("Enter Item Key:");
+        String DesiredItem = sc.nextLine();
+        for(Item itemK : itemInventory){
+            if(itemK.itemKey.equalsIgnoreCase(DesiredItem)){
+                if(itemK.getStock()>0){
+                    itemK.setStock(itemK.getStock()-1);
+                    System.out.println(itemK.getItemName()+" $"+itemK.getPrice()+" ");
+                }
+            }
+        }
+
     }
 }
