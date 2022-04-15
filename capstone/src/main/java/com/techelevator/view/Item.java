@@ -26,9 +26,7 @@ public abstract class Item {
         this.stock = stock;
     }
 
-    public String getMessage() {
-        return message;
-    }
+    public abstract String getMessage();
 
     public String getItemName() {
         return itemName;
