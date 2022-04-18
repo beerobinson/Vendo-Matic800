@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 public abstract class Payment extends Audit{
+
+
     private double userMoney = 0.0;
     private static final double QUARTER_VALUE = 0.25;
     private static final double DIME_VALUE = 0.10;
@@ -13,6 +15,9 @@ public abstract class Payment extends Audit{
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
     public double getUserMoney() {
         return userMoney;
+    }
+    public void setUserMoney(double userMoney) {
+        this.userMoney = userMoney;
     }
     public void Insert(){
         Scanner userInput = new Scanner(System.in);

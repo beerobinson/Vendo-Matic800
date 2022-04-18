@@ -51,6 +51,7 @@ public abstract class Item {
     }
 
     public void pullItem() {
+
         stock--;
     }
 

@@ -21,7 +21,7 @@ public class VendingMachineCLI {
 		while (true) {
 
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
-			VendingMachine vend = new VendingMachine();
+			VendingMachine vend = new VendingMachine("capstone/vendingmachine.csv");
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items

@@ -6,8 +6,8 @@ import java.util.*;
 
 public class VendingMachine extends Payment{
     Map<String,Item> itemInventory = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-    public VendingMachine(){
-        File vend=new File("capstone/vendingmachine.csv");
+    public VendingMachine(String pathName){
+        File vend = new File(pathName);
         try(Scanner dataInput = new Scanner(vend)){
             while(dataInput.hasNextLine()){
                 String lineOfInput = dataInput.nextLine();
@@ -55,13 +55,13 @@ public class VendingMachine extends Payment{
            for (Map.Entry<String,Item> item : itemInventory.entrySet()) {
                item.getValue().DisplayItem();
            }
-       }catch (Exception e){
+       } catch (Exception e){
            System.err.println(e.getMessage());
        }
     }
     public void DispenseItem(){
         this.DisplayItems();
-        Scanner sc =new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter Item Key:");
         String desiredItemKey = sc.nextLine();
         if(itemInventory.containsKey(desiredItemKey)) {
