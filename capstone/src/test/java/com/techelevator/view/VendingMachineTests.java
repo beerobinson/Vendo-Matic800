@@ -15,10 +15,19 @@ public class VendingMachineTests {
     }
 
     @Test
-    public void itemInventoryContainsAllItems(){
+    public void itemInventoryContainsAllItemsTest(){
         int actualMapSize = vend.itemInventory.size();
         int expectedMapSize = 16;
         Assert.assertEquals(expectedMapSize,actualMapSize);
     }
 
+//    @Test
+//    public void changeTest(){
+//        vend.setUserMoney(4.05);
+//        vend.ReturnMoney();
+//        int expectedQuarters = 16;
+//        int expectedNickels = 1;
+//        int expectedDimes = 0;
+//        Assert.assertEquals(expectedQuarters,);
+//    }
 }
