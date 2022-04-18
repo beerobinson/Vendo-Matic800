@@ -1,5 +1,7 @@
 package com.techelevator.view;
 
+import java.text.NumberFormat;
+
 public abstract class Item {
     String message;
     String itemName;
@@ -48,15 +50,20 @@ public abstract class Item {
         return stock;
     }
 
-    public Item (double price, int stock, String itemKey, String itemName){
+    public void pullItem() {
+        stock--;
+    }
+
+    public Item (double price, String itemKey, String itemName){
         this.price=price;
-        this.stock=stock;
+        this.stock=5;
         this.itemKey=itemKey;
         this.itemName=itemName;
     }
 
     public void DisplayItem(){
-        System.out.println(this.getItemKey()+" "+ this.getItemName()+" $"+this.getPrice()+" "+this.getStock());
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        System.out.println(this.getItemKey() + " " + this.getItemName() + " " + formatter.format(this.getPrice()) + " " + this.getStock());
     }
 
 

@@ -28,12 +28,9 @@ public class VendingMachineCLI {
 				vend.DisplayItems();
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
+				vend.Purchase();
 
-				vend.Insert();
-
-				vend.DispenseItem();
-
-			}
+				}
 		}
 	}
 

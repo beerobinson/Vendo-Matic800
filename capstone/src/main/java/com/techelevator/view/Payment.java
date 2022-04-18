@@ -1,10 +1,19 @@
 package com.techelevator.view;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public abstract class Payment extends Audit{
     private double userMoney = 0.0;
-
+    private static final double QUARTER_VALUE = 0.25;
+    private static final double DIME_VALUE = 0.10;
+    private static final double NICKEL_VALUE = 0.05;
+    NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    public double getUserMoney() {
+        return userMoney;
+    }
     public void Insert(){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Insert Money Here:");
@@ -27,25 +36,26 @@ public abstract class Payment extends Audit{
         }
     }
     public void ReturnMoney(){
+        DecimalFormat rounder = new DecimalFormat(".##");
+        rounder.setRoundingMode(RoundingMode.CEILING);
         double money = userMoney;
         int quarters = 0;
         int dimes = 0;
         int nickles = 0;
-        while (money != 0){
-            while(money % 0.25 == 0){
+        while (money > .05){
+            if (money >= QUARTER_VALUE){
                 quarters++;
-                money -= 0.25;
-            }
-            while(money % 0.10 == 0){
+                money = Double.parseDouble(rounder.format(money - QUARTER_VALUE));
+            } else if (money >= DIME_VALUE){
                 dimes++;
-                money -= 0.10;
-            }
-            while(money % 0.05 == 0){
+                money = Double.parseDouble(rounder.format(money - DIME_VALUE));
+            } else if (money >= NICKEL_VALUE){
                 nickles++;
-                money -= 0.05;
+                money = Double.parseDouble(rounder.format(money - NICKEL_VALUE));
             }
+            formatter.format(money);
         }
-        System.out.println("You recieve:" + quarters + " quaters," + dimes + " dimes," + nickles + " nickles.");
+        System.out.println("You receive:" + quarters + " quarters," + dimes + " dimes," + nickles + " nickles.");
         this.Record("Give Change:", userMoney, 0);
         userMoney = 0;
     }
