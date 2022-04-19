@@ -25,13 +25,6 @@ public abstract class Payment extends Audit{
 
 
 
-    public void setUserMoney( double userMoney ) {
-
-        this.userMoney = userMoney;
-    }
-
-
-
     public void Insert(){
 
         Scanner userInput = new Scanner(System.in);

@@ -28,13 +28,4 @@ public class VendingMachineTests {
         
     }
 
-//    @Test
-//    public void changeTest(){
-//        vend.setUserMoney(4.05);
-//        vend.ReturnMoney();
-//        int expectedQuarters = 16;
-//        int expectedNickels = 1;
-//        int expectedDimes = 0;
-//        Assert.assertEquals(expectedQuarters,);
-//    }
 }

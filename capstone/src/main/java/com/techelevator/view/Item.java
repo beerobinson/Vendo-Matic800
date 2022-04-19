@@ -5,36 +5,12 @@ import java.text.NumberFormat;
 public abstract class Item {
 
 
-    String message;
     String itemName;
     String itemKey;
-    String type;
     double price;
     int stock;
 
 
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-
-
-    public void setItemKey(String itemKey) {
-        this.itemKey = itemKey;
-    }
-
-
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
 
 
 
@@ -53,11 +29,6 @@ public abstract class Item {
         return itemKey;
     }
 
-
-
-    public String getType() {
-        return type;
-    }
 
 
 
